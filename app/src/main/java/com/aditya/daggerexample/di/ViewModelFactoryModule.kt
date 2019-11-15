@@ -5,6 +5,9 @@ import com.aditya.daggerexample.viewmodels.ViewModelProviderFactory
 import dagger.Binds
 import dagger.Module
 
+/**
+ * Provides the ViewModelFactory
+ */
 @Module
 abstract class ViewModelFactoryModule {
 

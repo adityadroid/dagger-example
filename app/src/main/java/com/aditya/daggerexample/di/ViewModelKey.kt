@@ -5,6 +5,9 @@ import dagger.MapKey
 import kotlin.reflect.KClass
 
 
+/**
+ * Annotation for constructor injection for ViewModels
+ */
 @MustBeDocumented
 @Target(
     AnnotationTarget.FUNCTION,

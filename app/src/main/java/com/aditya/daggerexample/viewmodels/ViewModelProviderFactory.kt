@@ -6,6 +6,9 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 
+/**
+ * This creates the mapping for ViewModelClass: Provider<ViewModelInstance>
+ */
 class ViewModelProviderFactory @Inject constructor(private val creators: Map<Class<out ViewModel>,@JvmSuppressWildcards Provider<ViewModel>>) :
     Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

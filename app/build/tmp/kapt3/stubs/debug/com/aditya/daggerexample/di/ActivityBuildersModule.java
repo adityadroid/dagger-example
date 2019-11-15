@@ -7,7 +7,7 @@ import java.lang.System;
 public abstract class ActivityBuildersModule {
     
     @org.jetbrains.annotations.NotNull()
-    @dagger.android.ContributesAndroidInjector(modules = {com.aditya.daggerexample.di.auth.AuthModule.class})
+    @dagger.android.ContributesAndroidInjector(modules = {com.aditya.daggerexample.di.auth.AuthViewModelModule.class, com.aditya.daggerexample.di.auth.AuthModule.class})
     public abstract com.aditya.daggerexample.ui.auth.AuthActivity contributesAuthActivity();
     
     public ActivityBuildersModule() {

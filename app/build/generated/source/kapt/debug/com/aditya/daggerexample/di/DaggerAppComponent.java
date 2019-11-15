@@ -5,6 +5,8 @@ import android.app.Application;
 import android.graphics.drawable.Drawable;
 import androidx.lifecycle.ViewModel;
 import com.aditya.daggerexample.BaseApplication;
+import com.aditya.daggerexample.di.auth.AuthModule_ProvidesAuthApi$app_debugFactory;
+import com.aditya.daggerexample.di.network.auth.AuthApi;
 import com.aditya.daggerexample.ui.auth.AuthActivity;
 import com.aditya.daggerexample.ui.auth.AuthActivity_MembersInjector;
 import com.aditya.daggerexample.ui.auth.AuthViewModel;
@@ -96,16 +98,33 @@ public final class DaggerAppComponent implements AppComponent {
   }
 
   private final class AuthActivitySubcomponentImpl implements ActivityBuildersModule_ContributesAuthActivity.AuthActivitySubcomponent {
+    private Provider<AuthApi> providesAuthApi$app_debugProvider;
+
+    private Provider<AuthViewModel> authViewModelProvider;
+
     private AuthActivitySubcomponentImpl(AuthActivity arg0) {
 
+      initialize(arg0);
     }
 
     private Map<Class<? extends ViewModel>, Provider<ViewModel>> getMapOfClassOfAndProviderOfViewModel(
         ) {
-      return Collections.<Class<? extends ViewModel>, Provider<ViewModel>>singletonMap(AuthViewModel.class, (Provider) AuthViewModel_Factory.create());}
+      return Collections.<Class<? extends ViewModel>, Provider<ViewModel>>singletonMap(AuthViewModel.class, (Provider) authViewModelProvider);}
 
     private ViewModelProviderFactory getViewModelProviderFactory() {
       return new ViewModelProviderFactory(getMapOfClassOfAndProviderOfViewModel());}
+
+    private AuthApi getAuthApi() {
+      return AuthModule_ProvidesAuthApi$app_debugFactory.providesAuthApi$app_debug(AppModule_ProvideRetrofitInstanceFactory.provideRetrofitInstance());}
+
+    private AuthViewModel getAuthViewModel() {
+      return new AuthViewModel(getAuthApi());}
+
+    @SuppressWarnings("unchecked")
+    private void initialize(final AuthActivity arg0) {
+      this.providesAuthApi$app_debugProvider = AuthModule_ProvidesAuthApi$app_debugFactory.create(AppModule_ProvideRetrofitInstanceFactory.create());
+      this.authViewModelProvider = AuthViewModel_Factory.create(providesAuthApi$app_debugProvider);
+    }
 
     @Override
     public void inject(AuthActivity arg0) {
@@ -116,7 +135,7 @@ public final class DaggerAppComponent implements AppComponent {
       AuthActivity_MembersInjector.injectDrawable(instance, DaggerAppComponent.this.getDrawable());
       AuthActivity_MembersInjector.injectRequestManager(instance, DaggerAppComponent.this.getRequestManager());
       AuthActivity_MembersInjector.injectProviderFactory(instance, getViewModelProviderFactory());
-      AuthActivity_MembersInjector.injectAuthViewModel(instance, new AuthViewModel());
+      AuthActivity_MembersInjector.injectAuthViewModel(instance, getAuthViewModel());
       return instance;
     }
   }

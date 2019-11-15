@@ -1,16 +1,15 @@
 package com.aditya.daggerexample.di.auth
 
-import androidx.lifecycle.ViewModel
-import com.aditya.daggerexample.di.ViewModelKey
-import com.aditya.daggerexample.ui.auth.AuthViewModel
-import dagger.Binds
+import com.aditya.daggerexample.di.network.auth.AuthApi
 import dagger.Module
-import dagger.multibindings.IntoMap
+import dagger.Provides
+import retrofit2.Retrofit
 
 @Module
-abstract class AuthModule {
-    @Binds
-    @IntoMap
-    @ViewModelKey(AuthViewModel::class)
-    abstract fun bindAuthViewModel(authViewModel: AuthViewModel):ViewModel
+object AuthModule {
+
+        @Provides
+        internal fun providesAuthApi(retrofit: Retrofit):AuthApi{
+            return retrofit.create(AuthApi::class.java)
+        }
 }
