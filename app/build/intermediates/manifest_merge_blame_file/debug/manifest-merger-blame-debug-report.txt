@@ -30,9 +30,9 @@
 20        android:testOnly="true"
 21        android:theme="@style/AppTheme" >
 21-->/Users/adi/Documents/AndroidStudioProjects/DaggerExample/app/src/main/AndroidManifest.xml:12:9-40
-22        <activity android:name="com.aditya.daggerexample.AuthActivity" >
+22        <activity android:name="com.aditya.daggerexample.ui.auth.AuthActivity" >
 22-->/Users/adi/Documents/AndroidStudioProjects/DaggerExample/app/src/main/AndroidManifest.xml:13:9-19:20
-22-->/Users/adi/Documents/AndroidStudioProjects/DaggerExample/app/src/main/AndroidManifest.xml:13:19-47
+22-->/Users/adi/Documents/AndroidStudioProjects/DaggerExample/app/src/main/AndroidManifest.xml:13:19-55
 23            <intent-filter>
 23-->/Users/adi/Documents/AndroidStudioProjects/DaggerExample/app/src/main/AndroidManifest.xml:14:13-18:29
 24                <action android:name="android.intent.action.MAIN" />
@@ -44,6 +44,17 @@
 26-->/Users/adi/Documents/AndroidStudioProjects/DaggerExample/app/src/main/AndroidManifest.xml:17:27-74
 27            </intent-filter>
 28        </activity>
-29    </application>
-30
-31</manifest>
+29
+30        <provider
+30-->[androidx.lifecycle:lifecycle-process:2.2.0-rc02] /Applications/Android Studio 4.0 Preview.app/Contents/gradle/caches/transforms-2/files-2.1/ff7b6201384899380884dd59f1123772/jetified-lifecycle-process-2.2.0-rc02/AndroidManifest.xml:25:9-29:43
+31            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+31-->[androidx.lifecycle:lifecycle-process:2.2.0-rc02] /Applications/Android Studio 4.0 Preview.app/Contents/gradle/caches/transforms-2/files-2.1/ff7b6201384899380884dd59f1123772/jetified-lifecycle-process-2.2.0-rc02/AndroidManifest.xml:26:13-79
+32            android:authorities="com.aditya.daggerexample.lifecycle-process"
+32-->[androidx.lifecycle:lifecycle-process:2.2.0-rc02] /Applications/Android Studio 4.0 Preview.app/Contents/gradle/caches/transforms-2/files-2.1/ff7b6201384899380884dd59f1123772/jetified-lifecycle-process-2.2.0-rc02/AndroidManifest.xml:27:13-69
+33            android:exported="false"
+33-->[androidx.lifecycle:lifecycle-process:2.2.0-rc02] /Applications/Android Studio 4.0 Preview.app/Contents/gradle/caches/transforms-2/files-2.1/ff7b6201384899380884dd59f1123772/jetified-lifecycle-process-2.2.0-rc02/AndroidManifest.xml:28:13-37
+34            android:multiprocess="true" />
+34-->[androidx.lifecycle:lifecycle-process:2.2.0-rc02] /Applications/Android Studio 4.0 Preview.app/Contents/gradle/caches/transforms-2/files-2.1/ff7b6201384899380884dd59f1123772/jetified-lifecycle-process-2.2.0-rc02/AndroidManifest.xml:29:13-40
+35    </application>
+36
+37</manifest>

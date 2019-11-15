@@ -27,6 +27,13 @@ anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim fragment_close_enter
+anim fragment_close_exit
+anim fragment_fade_enter
+anim fragment_fade_exit
+anim fragment_fast_out_extra_slow_in
+anim fragment_open_enter
+anim fragment_open_exit
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -1044,6 +1051,7 @@ drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable logo
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
@@ -1061,6 +1069,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable white_background
 id ALT
 id CTRL
 id FUNCTION
@@ -1170,6 +1179,7 @@ id fill_vertical
 id filled
 id fixed
 id forever
+id fragment_container_view_tag
 id ghost_view
 id glide_custom_view_target_tag
 id gone
@@ -1305,6 +1315,7 @@ id useLogo
 id user_id_input
 id view_offset_helper
 id visible
+id visible_removing_fragment_view_tag
 id withText
 id wrap
 id wrap_content
@@ -1977,6 +1988,8 @@ styleable FlowLayout itemSpacing lineSpacing
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
+styleable Fragment android_name android_id android_tag
+styleable FragmentContainerView android_name android_tag
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable LinearConstraintLayout android_orientation

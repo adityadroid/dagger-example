@@ -1,6 +1,7 @@
 package com.aditya.daggerexample.di;
 
-import com.aditya.daggerexample.AuthActivity;
+import com.aditya.daggerexample.di.auth.AuthModule;
+import com.aditya.daggerexample.ui.auth.AuthActivity;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
@@ -20,7 +21,7 @@ public abstract class ActivityBuildersModule_ContributesAuthActivity {
   abstract AndroidInjector.Factory<?> bindAndroidInjectorFactory(
       AuthActivitySubcomponent.Factory builder);
 
-  @Subcomponent
+  @Subcomponent(modules = AuthModule.class)
   public interface AuthActivitySubcomponent extends AndroidInjector<AuthActivity> {
     @Subcomponent.Factory
     interface Factory extends AndroidInjector.Factory<AuthActivity> {}

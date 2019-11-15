@@ -2,9 +2,15 @@
 package com.aditya.daggerexample.di;
 
 import android.app.Application;
-import com.aditya.daggerexample.AuthActivity;
-import com.aditya.daggerexample.AuthActivity_MembersInjector;
+import android.graphics.drawable.Drawable;
+import androidx.lifecycle.ViewModel;
 import com.aditya.daggerexample.BaseApplication;
+import com.aditya.daggerexample.ui.auth.AuthActivity;
+import com.aditya.daggerexample.ui.auth.AuthActivity_MembersInjector;
+import com.aditya.daggerexample.ui.auth.AuthViewModel;
+import com.aditya.daggerexample.ui.auth.AuthViewModel_Factory;
+import com.aditya.daggerexample.viewmodels.ViewModelProviderFactory;
+import com.bumptech.glide.RequestManager;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication_MembersInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -20,11 +26,13 @@ import javax.inject.Provider;
     "rawtypes"
 })
 public final class DaggerAppComponent implements AppComponent {
+  private final Application application;
+
   private Provider<ActivityBuildersModule_ContributesAuthActivity.AuthActivitySubcomponent.Factory> authActivitySubcomponentFactoryProvider;
 
-  private DaggerAppComponent(Application application) {
-
-    initialize(application);
+  private DaggerAppComponent(Application applicationParam) {
+    this.application = applicationParam;
+    initialize(applicationParam);
   }
 
   public static AppComponent.Builder builder() {
@@ -38,8 +46,14 @@ public final class DaggerAppComponent implements AppComponent {
   private DispatchingAndroidInjector<Object> getDispatchingAndroidInjectorOfObject() {
     return DispatchingAndroidInjector_Factory.newInstance(getMapOfClassOfAndProviderOfAndroidInjectorFactoryOf(), Collections.<String, Provider<AndroidInjector.Factory<?>>>emptyMap());}
 
+  private Drawable getDrawable() {
+    return AppModule_ProvideAppDrawableFactory.provideAppDrawable(application);}
+
+  private RequestManager getRequestManager() {
+    return AppModule_ProvideGlideInstanceFactory.provideGlideInstance(application, AppModule_ProvideRequestOptionsFactory.provideRequestOptions());}
+
   @SuppressWarnings("unchecked")
-  private void initialize(final Application application) {
+  private void initialize(final Application applicationParam) {
     this.authActivitySubcomponentFactoryProvider = new Provider<ActivityBuildersModule_ContributesAuthActivity.AuthActivitySubcomponent.Factory>() {
       @Override
       public ActivityBuildersModule_ContributesAuthActivity.AuthActivitySubcomponent.Factory get() {
@@ -86,13 +100,23 @@ public final class DaggerAppComponent implements AppComponent {
 
     }
 
+    private Map<Class<? extends ViewModel>, Provider<ViewModel>> getMapOfClassOfAndProviderOfViewModel(
+        ) {
+      return Collections.<Class<? extends ViewModel>, Provider<ViewModel>>singletonMap(AuthViewModel.class, (Provider) AuthViewModel_Factory.create());}
+
+    private ViewModelProviderFactory getViewModelProviderFactory() {
+      return new ViewModelProviderFactory(getMapOfClassOfAndProviderOfViewModel());}
+
     @Override
     public void inject(AuthActivity arg0) {
       injectAuthActivity(arg0);}
 
     private AuthActivity injectAuthActivity(AuthActivity instance) {
       DaggerAppCompatActivity_MembersInjector.injectAndroidInjector(instance, DaggerAppComponent.this.getDispatchingAndroidInjectorOfObject());
-      AuthActivity_MembersInjector.injectSomeString(instance, AppModule_SomeStringFactory.someString());
+      AuthActivity_MembersInjector.injectDrawable(instance, DaggerAppComponent.this.getDrawable());
+      AuthActivity_MembersInjector.injectRequestManager(instance, DaggerAppComponent.this.getRequestManager());
+      AuthActivity_MembersInjector.injectProviderFactory(instance, getViewModelProviderFactory());
+      AuthActivity_MembersInjector.injectAuthViewModel(instance, new AuthViewModel());
       return instance;
     }
   }

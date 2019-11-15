@@ -513,6 +513,7 @@
     <item name="action_bar_spinner" type="id"/>
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
+    <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="glide_custom_view_target_tag" type="id"/>
     <item name="home" type="id"/>
@@ -551,6 +552,7 @@
     <item name="transition_transform" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
+    <item name="visible_removing_fragment_view_tag" type="id"/>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="app_bar_elevation_anim_duration">150</integer>
@@ -4067,6 +4069,15 @@
         <attr name="android:ttcIndex"/>
     </declare-styleable>
     <declare-styleable name="ForegroundLinearLayout"><attr name="android:foreground"/><attr name="android:foregroundGravity"/><attr format="boolean" name="foregroundInsidePadding"/></declare-styleable>
+    <declare-styleable name="Fragment">
+        <attr name="android:name"/>
+        <attr name="android:id"/>
+        <attr name="android:tag"/>
+    </declare-styleable>
+    <declare-styleable name="FragmentContainerView">
+        <attr name="android:name"/>
+        <attr name="android:tag"/>
+    </declare-styleable>
     <declare-styleable name="GradientColor">
         <!-- Start color of the gradient. -->
         <attr name="android:startColor"/>
