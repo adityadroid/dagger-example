@@ -1,3 +1,9 @@
 <component name="ProjectDictionaryState">
-  <dictionary name="adi" />
+  <dictionary name="adi">
+    <words>
+      <w>rxandroid</w>
+      <w>rxcalladapter</w>
+      <w>rxjava</w>
+    </words>
+  </dictionary>
 </component>

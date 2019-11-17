@@ -1,6 +1,6 @@
 package com.aditya.daggerexample.di.auth
 
-import com.aditya.daggerexample.di.network.auth.AuthApi
+import com.aditya.daggerexample.network.auth.AuthApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

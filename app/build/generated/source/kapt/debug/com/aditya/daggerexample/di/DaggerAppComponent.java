@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import androidx.lifecycle.ViewModel;
 import com.aditya.daggerexample.BaseApplication;
 import com.aditya.daggerexample.di.auth.AuthModule_ProvidesAuthApi$app_debugFactory;
-import com.aditya.daggerexample.di.network.auth.AuthApi;
+import com.aditya.daggerexample.network.auth.AuthApi;
 import com.aditya.daggerexample.ui.auth.AuthActivity;
 import com.aditya.daggerexample.ui.auth.AuthActivity_MembersInjector;
 import com.aditya.daggerexample.ui.auth.AuthViewModel;
